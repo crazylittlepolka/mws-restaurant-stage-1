@@ -143,13 +143,13 @@ nav h1 a {
 
 /* ====================== Restaurant Listing ====================== */
 #restaurants-list {
+
   background-color: #f3f3f3;
   list-style: outside none none;
   margin: 0;
-  padding: 70px 15px 60px;
+  padding: 70px 10% 60px;
 	/*70px 0 60px;*/
   text-align: center;
-
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -234,8 +234,9 @@ nav h1 a {
 }
 .inside #footer {
   bottom: 0;
-  position: absolute;
+  /*position: absolute;*/
   width: 100%;
+	padding: 0;
 }
 #restaurant-name {
   color: #f18200;
@@ -367,14 +368,16 @@ span {
 
 /*media query*/
 
-@media screen and (min-width: 444px ){
-	/*body {
+@media screen and (min-width: 360px ){
+	body {
 		width: 100%;
-		margin: 0;
-		padding: 0;
-	}*/
+	}
+
+
 	#restaurants-list {
-		padding: 20px 15px 60px;
+		/*padding: 20px 15px 60px;*/
+		width: 80%;
+		/*margin: 0 auto;*/
 	}
 }
 @media screen and (min-width: 480px){

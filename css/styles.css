@@ -187,7 +187,7 @@ nav h1 a {
   max-height: 100%;
  	border-radius: 20px 0;
 }
-#restaurants-list li h1 {
+#restaurants-list li h2 {
   color: #046590;
   font-family: Arial,sans-serif;
   font-size: 14pt;

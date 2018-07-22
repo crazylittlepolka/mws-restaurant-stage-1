@@ -1,5 +1,5 @@
 //current cache version
-var cacheName = 'v2';
+var cacheName = 'v3';
 
 //service worker installation
 self.addEventListener('install', function(event) {
@@ -9,7 +9,7 @@ self.addEventListener('install', function(event) {
     '/',
     '/index.html',
     './restaurant.html',
-    '/css/style.css',
+    '/css/styles.css',
     '/data/restaurants.json',
     '/js/dbhelper.js',
     '/js/main.js',

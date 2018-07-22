@@ -98,8 +98,13 @@ initMap = () => {
     center: loc,
     scrollwheel: false
   });
+
+  google.maps.event.addDomListener(window, 'resize', function () {
+  map.setCenter(loc);
+});
+
   updateRestaurants();
-} */
+}*/
 
 /**
  * Update page and map for current restaurants.
@@ -210,6 +215,4 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     });
     self.markers.push(marker);
   });
-} */
-
-//registering service-worker
+}*/

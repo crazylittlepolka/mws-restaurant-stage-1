@@ -1,22 +1,16 @@
-var cacheName = 'v1';
+//current cache version
+var cacheName = 'v2';
 
+//service worker installation
 self.addEventListener('install', function(event) {
+
+  //files to be cached
   var filesToCache = [
     '/',
     '/index.html',
     './restaurant.html',
     '/css/style.css',
     '/data/restaurants.json',
-    /*'/img/1.jpg',
-    '/img/2.jpg',
-    '/img/3.jpg',
-    '/img/4.jpg',
-    '/img/5.jpg',
-    '/img/6.jpg',
-    '/img/7.jpg',
-    '/img/8.jpg',
-    '/img/9.jpg',
-    '/img/10.jpg',*/
     '/js/dbhelper.js',
     '/js/main.js',
     '/js/restaurant_info.js'
@@ -28,6 +22,7 @@ self.addEventListener('install', function(event) {
     caches.open(cacheName).then(function(cache) {
       console.log("[ServiceWorker] Caching cacheFiles");
 
+      //adding files to the cache
       return cache.addAll(filesToCache).catch(function(err) {
         console.log('Caches open failed ' + err);
       });
@@ -38,9 +33,25 @@ self.addEventListener('install', function(event) {
 self.addEventListener('activate', function(event) {
   console.log("[ServiceWorker] Activated");
 
+//we are deleting old caches versions
+  event.waitUntil(
+
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(cacheNames.map(function(thisCacheName) {
+
+        if (thisCacheName !== cacheName) {
+
+          console.log("[ServiceWorker] Removing Cached Files from", thisCacheName);
+          return caches.delete(thisCacheName);
+        }
+      }))
+
+    })
+  )
 
 });
 
+//serve files from cache
 self.addEventListener('fetch', function(event) {
   console.log("[ServiceWorker] Fetching", event.request.url);
 
